@@ -18,7 +18,7 @@ vector<int> arr = {9, 0, 8, 3, 4, 2};
 int main()
 {
     int userChoice = 0;
-
+    
     cout << "\nWhat you wanna perform: \n\t1. Insert\n\t2. Delete\n\t3. Search\n\nEnter your choice: ";
     cin >> userChoice;    
 
