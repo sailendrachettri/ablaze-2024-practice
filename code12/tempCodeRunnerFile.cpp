@@ -1,3 +1,3 @@
 
-    for(char &ch : str){
-        ch = 
+
+    replaceWithChar(str);
