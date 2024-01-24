@@ -2,6 +2,7 @@
 Today: 23 - January 2024
 Author: Sailendra Chettri
 Purpose: Insert at head in singly linked list. Code using C++
+complected Lec 44: 29m:57s
 */
 #include<iostream>
 #include <bits/stdc++.h>
@@ -35,17 +36,29 @@ void insertAtHead(node* &head, int data){
     head = newNode;
 }
 
+void insertAtTail(node* &tail, int data){
+    node* newNode = new node(data);
+    tail->next = newNode;
+    tail = tail->next;
+
+}
+
 int main()
 {
 
     node *node1 = new node(10);
     node *head = node1;
+    node *tail = node1;
 
-    insertAtHead(head, 20);
-    insertAtHead(head, 3);
-    insertAtHead(head, 13);
-    insertAtHead(head, 4);
+    // insertAtHead(head, 20);
+    // insertAtHead(head, 3);
+    // traverseLL(head);
 
+    insertAtTail(tail, 20);
+    insertAtTail(tail, 30);
+    insertAtTail(tail, 40);
+    insertAtTail(tail, 50);
+    insertAtTail(tail, 60);
     traverseLL(head);
 
     
