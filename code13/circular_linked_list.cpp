@@ -53,8 +53,45 @@ void insertNode(node* &tail, int ele, int data){
     }
 }
 
+void deleteNode(node* &tail, int value){
+    // empty list
+    if(tail == NULL){
+        cout << "List is empty. So not deleted." << endl;
+        return;
+    }
+    else{
+        // assume that value is present in ll
+        node *prev = tail;
+        node *curr = prev->next;
+
+        while (curr->data != value)
+        {
+            prev = curr;
+            curr = curr->next;
+        }
+
+        prev->next = curr->next;
+
+        // single node cll
+        if(curr == prev)
+            tail = NULL;
+
+        // >= 2 node cll
+        else if(tail == curr)
+            tail = prev;
+
+        curr->next = NULL;
+        delete curr;     
+    }
+}
+
 void traverseCLL(node* tail){
     node* temp = tail;
+
+    if(tail == NULL){
+        cout << "List is empty" << endl;
+        return;
+    }
 
     cout << "Available Data: ";
 
@@ -76,13 +113,16 @@ int main()
     traverseCLL(tail);
 
 
-    insertNode(tail, 3, 4);
-    traverseCLL(tail);
+    // insertNode(tail, 3, 4);
+    // traverseCLL(tail);
 
-    insertNode(tail, 3, 109);
-    traverseCLL(tail);
+    // insertNode(tail, 3, 109);
+    // traverseCLL(tail);
 
-    insertNode(tail, 109, 101);
+    // insertNode(tail, 109, 101);
+    // traverseCLL(tail);
+
+    deleteNode(tail, 3);
     traverseCLL(tail);
 
     
