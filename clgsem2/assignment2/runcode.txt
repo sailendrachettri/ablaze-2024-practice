@@ -1,0 +1,10 @@
+g++ -c main.cpp -o main.o
+g++ -c conversion.cpp -o conversion.o
+g++ main.o conversion.o -o myprogram
+./myprogram
+
+
+OR 
+
+g++ main.cpp conversion.cpp -o myprogram
+./myprogram
