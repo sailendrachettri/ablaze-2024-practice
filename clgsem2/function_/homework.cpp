@@ -38,7 +38,7 @@ int main()
     cout << "Enter size of dataset: ";
     cin >> size;
 
-    float sqDiffArr[size];
+    float sqDiffArr[size], sqDiffArr2[size];
     int dataset[size];
 
     cout << "Enter " << size << " elements: ";
@@ -55,6 +55,7 @@ int main()
 
     // calcualte squire difference and store it to array (x - μ)^2
     for(int i = 0; i < size; i++){
+        sqDiffArr2[i] = dataset[i] - avg;
         sqDiffArr[i] = pow((dataset[i] - avg), 2);
     }
 
@@ -67,9 +68,10 @@ int main()
     standardDeviation = sqrt(variance);
 
     // print in tabular form in console
-    cout << "--x-- " << "  --μ-- " << " --(x - μ)^2-- " << endl;
+    cout << "  x   " << "  (x[i] - μ)   " << "  (x - μ)^2   " << endl;
     for(int i = 0; i < size; i++){
-        cout << "| " << dataset[i] << " |" << "   | " << setprecision(2) << avg << " |   " << "  | " << setprecision(2) << pow((dataset[i] - avg), 2) << " | "<< endl << endl;
+        cout << "| " << dataset[i] << "   |   | " << setprecision(2) << sqDiffArr2[i] << " |      | " << setprecision(2) << pow((dataset[i] - avg), 2) << " | "<< endl << endl;
+        // cout << "-----------------------------------------------------------------" << endl;
     }
     
     cout << "The varience is           : " << variance << endl;
