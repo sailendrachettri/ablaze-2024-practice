@@ -7,5 +7,5 @@ using namespace std;
     double convert(double value, string from, string to, bool isWeight);
     double convert(double value, string from, string to, char type);
     double convert(double value, string from, string to);
-    extern int a;
+    
 #endif
