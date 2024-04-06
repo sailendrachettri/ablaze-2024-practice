@@ -6,17 +6,17 @@ int q[MAX_SIZE];
 int front = -1, rear = -1;
 
 int qSize() {
-    return (rear - front);
+    return (rear - front + MAX_SIZE) % MAX_SIZE;
 }
 
 int isFull() {
-    if (rear == MAX_SIZE - 1)
+    if ((rear + 1) % MAX_SIZE == front)
         return 1;
     return 0;
 }
 
 int isEmpty() {
-    if (front == rear)
+    if (front == -1 && rear == -1)
         return 1;
     return 0;
 }
@@ -26,8 +26,11 @@ void enqueue(int val) {
         printf("Queue overflow!\n");
         return;
     }
-    q[++rear] = val;
-    printf("%d insertion successful!\n", val);
+    if (isEmpty())
+        front = 0;
+    rear = (rear + 1) % MAX_SIZE;
+    q[rear] = val;
+    printf("%d insertion successful! Front: %d, Rear: %d\n", val, front, rear);
 }
 
 void dequeue() {
@@ -35,26 +38,30 @@ void dequeue() {
         printf("Queue underflow\n");
         return;
     }
-    int val = q[++front];
-    printf("%d is deleted from queue.\n", val);
-
-    // Shift elements to the left after deletion
-    for (int i = front; i <= rear; i++) {
-        q[i - front] = q[i];
+    int val = q[front];
+    printf("%d is deleted from queue. Front: %d, Rear: %d\n", val, front, rear);
+    if (front == rear) {
+        front = -1;
+        rear = -1;
+    } else {
+        front = (front + 1) % MAX_SIZE;
     }
-    rear -= (front + 1); // Adjust rear after shifting
-    front = -1; // Reset front
 }
 
 void display() {
     if (isEmpty()) {
-        printf("Queue is empty.\n");
+        printf("Queue is empty. Front: %d, Rear: %d\n", front, rear);
         return;
     }
     printf("Queue elements: ");
-    for (int i = front + 1; i <= rear; i++)
+    int i = front;
+    while (1) {
         printf("%d ", q[i]);
-    printf("\n");
+        if (i == rear)
+            break;
+        i = (i + 1) % MAX_SIZE;
+    }
+    printf("\nFront: %d, Rear: %d\n", front, rear);
 }
 
 int main() {
