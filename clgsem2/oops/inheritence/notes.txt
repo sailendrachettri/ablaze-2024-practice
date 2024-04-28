@@ -1,0 +1,3 @@
+rules for protected :
+    1. an member declared is accable by member function with in its class and ny class immediatly derived from it
+    2. 

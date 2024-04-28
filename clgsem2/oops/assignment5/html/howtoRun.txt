@@ -1,0 +1,5 @@
+1. ./time in terminal
+2. Open with Livesever in vscode then
+3. Disconnect the server
+4. And again open with Livesever and 
+5. check the previous open tab for result
